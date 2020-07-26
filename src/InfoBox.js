@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, Typography } from "@material-ui/core";
+import { Card, CardContent, Typography, Table } from "@material-ui/core";
 
 function InfoBox(props) {
   return (
