@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { MenuItem, FormControl, Select, Card } from "@material-ui/core";
+import {
+  MenuItem,
+  FormControl,
+  Select,
+  Card,
+  CardContent,
+} from "@material-ui/core";
 import InfoBox from "./InfoBox";
 import Map from "./Map";
 import Table from "./Table";
 import { sortData } from "./utl";
+import LineGraph from "./LineGraph";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -94,9 +101,12 @@ function App() {
         <Map />
       </div>
       <Card className="app_right">
-        <h3> Live Cases By Country</h3>
-        <Table countries={tableData} />
-        <h3> Worldwide</h3>
+        <CardContent>
+          <h3> Live Cases By Country</h3>
+          <Table countries={tableData} />
+          <h3> Worldwide</h3>
+          <LineGraph />
+        </CardContent>
       </Card>
     </div>
   );
