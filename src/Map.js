@@ -1,11 +1,12 @@
 import React from "react";
 import "./Map.css";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
+import { showDataOnMap } from "./utl";
 
-function Map() {
+function Map(props) {
   return (
     <div className="map">
-      <LeafletMap>
+      <LeafletMap center={props.center} zoom={props.zoom}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy;<a href="http://osm.org/copyright">OpenStreetMap</a> contributions'
