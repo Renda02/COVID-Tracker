@@ -3,12 +3,20 @@ import { Line } from "react-chartjs-2";
 import numeral from "numeral";
 
 const options = {
+  legend: {
+    display: false,
+  },
+  elements: {
+    points: {
+      radius: 0,
+    },
+  },
   maintainAspectRatio: false,
   tooltips: {
     mode: "index",
     intersect: false,
-    callback: function (tooltipItem, value, data) {
-      return numeral(value).format("+0,0");
+    callback: function (tooltipItem, data) {
+      return numeral(tooltipItem.value).format("+0,0");
     },
   },
   scales: {
@@ -26,6 +34,11 @@ const options = {
         gridLines: {
           display: false,
         },
+        ticks: {
+          callback: function (value, index, values) {
+            return numeral(value).format("0a");
+          },
+        },
       },
     ],
   },
@@ -34,14 +47,18 @@ const options = {
 function LineGraph() {
   const [data, setData] = useState({});
 
-  const buildChartData = (data) => {
+  const buildChartData = (data, cases) => {
+    let lastDataPoint;
     let chartData = [];
     for (let date in data.cases) {
-      let newDataPoint = {
-        x: date,
-        y: data.cases[date],
-      };
-      chartData.push(newDataPoint);
+      if (lastDataPoint) {
+        let newDataPoint = {
+          x: date,
+          y: data[cases][date] - lastDataPoint,
+        };
+        chartData.push(newDataPoint);
+      }
+      lastDataPoint = data[cases][date];
     }
     return chartData;
   };
@@ -50,14 +67,13 @@ function LineGraph() {
     fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=90")
       .then((response) => response.json())
       .then((data) => {
-        const chartData = buildChartData(data);
+        const chartData = buildChartData(data, "cases");
         setData(chartData);
       });
   }, []);
 
   return (
     <div>
-      <h1> Hello Graph</h1>
       {data?.length > 0 && (
         <Line
           options={options}
