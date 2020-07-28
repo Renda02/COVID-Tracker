@@ -44,10 +44,10 @@ const options = {
   },
 };
 
-function LineGraph() {
+function LineGraph({ casesType = "cases" }) {
   const [data, setData] = useState({});
 
-  const buildChartData = (data, casesType = "cases") => {
+  const buildChartData = (data, casesType) => {
     let lastDataPoint;
     let chartData = [];
     for (let date in data.cases) {
@@ -70,7 +70,7 @@ function LineGraph() {
         const chartData = buildChartData(data, "cases");
         setData(chartData);
       });
-  }, []);
+  }, [casesType]);
 
   return (
     <div>
