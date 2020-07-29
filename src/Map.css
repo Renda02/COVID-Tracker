@@ -1,5 +1,6 @@
 .map {
   height: 500px;
+  max-width: 600px;
   background-color: white;
   padding: 1rem;
   border-radius: 10px;

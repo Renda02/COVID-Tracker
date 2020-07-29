@@ -12,6 +12,11 @@ body {
   padding: 20px;
 }
 
+.graph {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .app_header {
   display: flex;
   align-items: center;
@@ -23,7 +28,11 @@ body {
   flex: 0.9;
 }
 
-.stats {
+.app_dropdown {
+  background-color: #fff;
+}
+
+.app .stats {
   display: flex;
   justify-content: space-evenly;
 }
