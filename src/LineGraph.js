@@ -73,7 +73,9 @@ function LineGraph({ casesType = "cases" }) {
   }, [casesType]);
 
   return (
-    <div>
+    <div >
+      {/* // its called optional chaining, where it checks if data exist and if not, it just return the whole page as undefined without crushing*/}
+      {/* alternative to code below {data && data.length > 0 && ()} */}
       {data?.length > 0 && (
         <Line
           options={options}
