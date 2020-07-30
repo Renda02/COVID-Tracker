@@ -9,7 +9,7 @@ body {
 .app {
   display: flex;
   justify-content: space-evenly;
-  padding: 10px;
+  padding: 20px;
   align-items: center;
 }
 
