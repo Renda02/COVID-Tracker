@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const getcountriesData = async () => {
+    const getCountriesData = async () => {
       await fetch("https://disease.sh/v3/covid-19/countries")
         .then((response) => response.json())
         .then((data) => {
@@ -47,7 +47,7 @@ function App() {
           setCountries(countries);
         });
     };
-    getcountriesData();
+    getCountriesData();
   }, []);
 
   const displayCountry = (event) => {
@@ -71,10 +71,10 @@ function App() {
 
   return (
     <div className="app">
-      <div className="app-left">
+      <div className="app_left">
         <div className="app_header">
           <h1>
-            <i class="fas fa-virus"></i> COVID-19 Tracker
+            <i className="fas fa-virus"></i> COVID-19 Tracker
           </h1>
           <FormControl className="app_dropdown">
             <Select
@@ -125,8 +125,8 @@ function App() {
         <CardContent>
           <h3> Active Cases By Country</h3>
           <Table countries={tableData} />
-          <h3 className="graph"> Worldwide new {casesType}</h3>
-          <LineGraph casesType={casesType} />
+          <h3 className="app_graphLine"> Worldwide new {casesType}</h3>
+          <LineGraph className="app__graph" casesType={casesType} />
         </CardContent>
       </Card>
     </div>

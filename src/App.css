@@ -13,7 +13,22 @@ body {
   align-items: center;
 }
 
-.graph {
+.app_right .MuiCardContent-root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.app_graph {
+  flex-grow: 1;
+}
+
+.app_right {
+  display: flex;
+  flex-direction: column;
+}
+
+.app_graphLine {
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -33,7 +48,7 @@ body {
   background-color: #fff;
 }
 
-.app .stats {
+.stats {
   display: flex;
   justify-content: space-evenly;
 }
