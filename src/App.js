@@ -13,6 +13,8 @@ import Table from "./Table";
 import { sortData, prettyPrintStat } from "./utl";
 import LineGraph from "./LineGraph";
 import "leaflet/dist/leaflet.css";
+import { ExternalLink } from "react-external-link";
+
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -114,6 +116,11 @@ function App() {
             total={prettyPrintStat(countryInfo.deaths)}
           />
         </div>
+        <button>
+          <ExternalLink href="https://www.thelocal.es/" alt="news">
+            Latest news
+          </ExternalLink>
+        </button>
         <Map
           casesType={casesType}
           center={mapCenter}
@@ -127,7 +134,8 @@ function App() {
           <Table countries={tableData} />
           <h3 className="app_graphLine"> Worldwide new {casesType}</h3>
           <LineGraph className="app__graph" casesType={casesType} />
-        </CardContent>
+        
+        </CardContent>  
       </Card>
     </div>
   );
